@@ -4,7 +4,7 @@ using namespace std;
 int main() {
         int n;
         cin >> n;
-        int sum=1;
+        int s=1;
         for(int i=3;i<=n/2;i++){
             for(int j=2;j*j<=i;j++){
                 if(j%i==0){
@@ -12,7 +12,7 @@ int main() {
                 }
             }
         }
-        cout<<sum;
+        cout<<s;
     
     return 0;
 }
