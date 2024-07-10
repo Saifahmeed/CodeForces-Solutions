@@ -1,70 +1,69 @@
-#include <bits/stdc++.h>
-#define mp make_pair
-#define SAIFf ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-typedef long double ld;
-typedef long long ll;
-const ll oo = LONG_LONG_MAX;
-const ll mod = 1e9 + 7;
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <set>
+
 using namespace std;
-vector<char> alph = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-template<class T>
-void pintff(const vector<T>& v) {
-    for (const auto& k : v) {
-        if(k.first == 0) {
-            cout << -1 << endl;
-        }
-        else {
-            cout << k.first << " " << k.second << endl;
-        }
-    }
-}
 
-void read(vector<int>& v, int n) {
-    for (int i = 0; i < n; ++i) {
-        cin >> v[i];
-    }
-}
-
-vector<pair<ll,ll>> out;
+vector<pair<double, double>> out;
 
 void SAIF() {
-    ll n, k;
+    int n, k;
     cin >> n >> k;
-    bool flag = false;
-    vector<ll> v(n);
+    
+    vector<double> v;
+    set<double> result_set;
+    vector<double> result2;
+    
     for (int i = 0; i < n; ++i) {
-        cin >> v[i];
+        double x;
+        cin >> x;
+        if (x <= k) {
+            v.push_back(x);
+        }
     }
+    
     sort(v.begin(), v.end());
-    int it = upper_bound(v.begin(), v.end(), k) - v.begin();
-    for (int i = 0; i <= it; ++i) {
-    ll res = k / v[i];
-    if (floor(res) == res) {
-        vector<ll> temp;
-        for (int j = 0; j <= it; ++j) {
-            if (j != i) {
-                temp.push_back(v[j]);
+    
+    for (int i = 0; i < v.size(); i++) {
+        if (result_set.count(v[i])) {
+            result2.push_back(v[i]);
+        } else if (v[i] <= sqrt(k)) {
+            double res = k / v[i];
+            if (res == floor(res)) {
+                result_set.insert(res);
             }
         }
-        if (binary_search(temp.begin(), temp.end(), res)) {
-            out.push_back(mp(v[i], res));
-            flag = true;
-            return;
-        }
     }
-}
-    if(!flag) {
-        out.push_back(mp(0, 0));
+    
+    if (result2.empty()) {
+        out.push_back(make_pair(0, 0));
+    } else {
+        double max_value = *result2.rbegin();
+        double min_value = k / max_value;
+        out.push_back(make_pair(min_value, max_value));
     }
 }
 
 int main() {
-    SAIFf
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     int tc;
     cin >> tc;
+    
     while (tc--) {
         SAIF();
     }
-    pintff(out);
+    
+    for (auto& p : out) {
+        if (p.first == 0) {
+            cout << -1 << endl;
+        } else {
+            cout << p.first << " " << p.second << endl;
+        }
+    }
+    
     return 0;
 }
