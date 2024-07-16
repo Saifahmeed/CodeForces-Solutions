@@ -14,18 +14,14 @@ void pintff(const vector<T>& v) {
     }
 }
 
-void read(vector<int>& v, int n) {
-    for (int i = 0; i < n; ++i) {
-        cin >> v[i];
-    }
-}
-
-vector<ll> out;
+vector<string> out;
 
 void SAIF() {
+    string n;
 
 }
 int main() {
+    //freopen("task.in", "r", stdin);
     SAIFf
         int tc;
     cin >> tc;
