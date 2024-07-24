@@ -4,7 +4,13 @@
 
 This repository contains my solutions to Codeforces problems in C++ language.
 
-## Index
+#### If this helped you out, please consider giving it a :star:
+
+<div align="center">
+
+## Problem List
+
+#### Sorted by Problem Name
 
 | Index |                    Problem Name                    |                                                               Solution                                                                |
 | :---: | :------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
@@ -128,7 +134,5 @@ This repository contains my solutions to Codeforces problems in C++ language.
 |  118  |                    XOR_Pairing                     |                    [Solution](https://github.com/Saifahmeed/CodeForces-Solutions/blob/master/Code\XOR_Pairing.cpp)                    |
 |  119  |                   XOR_Sequences                    |                   [Solution](https://github.com/Saifahmeed/CodeForces-Solutions/blob/master/Code\XOR_Sequences.cpp)                   |
 |  120  |                  Young_Physicist                   |                  [Solution](https://github.com/Saifahmeed/CodeForces-Solutions/blob/master/Code\Young_Physicist.cpp)                  |
-
-#### If this helped you out, please consider giving it a :star:
 
 </div>
