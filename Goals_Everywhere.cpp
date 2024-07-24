@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #define mp make_pair
 #define SAIFf ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
@@ -14,39 +13,39 @@ void pintff(const vector<T>& v) {
         cout << k << endl;
     }
 }
-ll countDigit(ll n)
-{
-    if (n == 0)
-        return 1;
+// int rec(vector<int>& a, int count) {
+//     if (a.size() == 1) {
+//         return count + a[0];
+//     }
 
-    ll count = 0;
-    while (n != 0) {
-        n = n / 10;
-        ++count;
-    }
-    return count;
-}
-
-ll cal(ll n) {
-    if (n == 0) return 0;
-    ll tot = 0;
-    ll f = 1;
-    ll ca = 1;
-    while (ca <= n) {
-        ll ne = ca * 10;
-        tot += (min(n + 1, ne) - ca) * countDigit(ca);
-        ca = ne;
-    }
-    return tot;
-}
-
+// }
 vector<ll> out;
-
 void SAIF() {
-    ll L, R;
-    cin >> L >> R;
-    ll tot = cal(R) - cal(L - 1);
-    out.push_back(tot);
+    int n;
+    cin >> n;
+    int count = 0;
+    vector <int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    while (a.size() > 1) {
+        sort(a.begin(), a.end(), greater<int>());
+        count += a[0];
+        int x = a[0];
+        int idx = 1;
+        while (x > 0) {
+            if (x - a[idx] > 0) {
+                x = x - a[idx];
+                idx++;
+            }
+            else {
+                a[idx] = a[idx] - x;
+            }
+        }
+        a.erase(a.begin());
+    }
+    count += a[0];
+    out.push_back(count);
 }
 int main() {
     //freopen("task.in", "r", stdin);

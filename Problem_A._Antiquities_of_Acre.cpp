@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #define mp make_pair
 #define SAIFf ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
@@ -14,12 +13,30 @@ void pintff(const vector<T>& v) {
         cout << k << endl;
     }
 }
-ll countDigit(ll n)
+int nCr(int n, int r)
+{
+    if (r > n)
+        return 0;
+    if (r == 0 || r == n)
+        return 1;
+    return nCr(n - 1, r - 1) + nCr(n - 1, r);
+}
+ll power(ll x, ll y) {//x power y
+    ll res = 1;
+    while (y > 0) {
+        if (y & 1)
+            res *= x;
+        y = y >> 1;
+        x = x * x;
+    }
+    return res;
+}
+int countDigit(long long n)
 {
     if (n == 0)
         return 1;
 
-    ll count = 0;
+    int count = 0;
     while (n != 0) {
         n = n / 10;
         ++count;
@@ -27,32 +44,20 @@ ll countDigit(ll n)
     return count;
 }
 
-ll cal(ll n) {
-    if (n == 0) return 0;
-    ll tot = 0;
-    ll f = 1;
-    ll ca = 1;
-    while (ca <= n) {
-        ll ne = ca * 10;
-        tot += (min(n + 1, ne) - ca) * countDigit(ca);
-        ca = ne;
-    }
-    return tot;
-}
-
 vector<ll> out;
 
 void SAIF() {
-    ll L, R;
-    cin >> L >> R;
-    ll tot = cal(R) - cal(L - 1);
-    out.push_back(tot);
+    ll n, x, h, m, s;
+    cin >> n >> x >> h >> m >> s;
+    ll le = n - (x * (h * 60 * 60 + m * 60 + s));
+    if (le <= 0) out.push_back(0);
+    else out.push_back(le);
 }
 int main() {
     //freopen("task.in", "r", stdin);
     SAIFf
-        int tc;
-    cin >> tc;
+        int tc = 1;
+    // cin >> tc;
     while (tc--) {
         SAIF();
     }

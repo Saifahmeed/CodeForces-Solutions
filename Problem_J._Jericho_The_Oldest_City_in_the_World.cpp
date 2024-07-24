@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #define mp make_pair
 #define SAIFf ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
@@ -14,12 +13,12 @@ void pintff(const vector<T>& v) {
         cout << k << endl;
     }
 }
-ll countDigit(ll n)
+int countDigit(long long n)
 {
     if (n == 0)
         return 1;
 
-    ll count = 0;
+    int count = 0;
     while (n != 0) {
         n = n / 10;
         ++count;
@@ -27,32 +26,22 @@ ll countDigit(ll n)
     return count;
 }
 
-ll cal(ll n) {
-    if (n == 0) return 0;
-    ll tot = 0;
-    ll f = 1;
-    ll ca = 1;
-    while (ca <= n) {
-        ll ne = ca * 10;
-        tot += (min(n + 1, ne) - ca) * countDigit(ca);
-        ca = ne;
-    }
-    return tot;
-}
-
-vector<ll> out;
+vector<string> out;
 
 void SAIF() {
-    ll L, R;
-    cin >> L >> R;
-    ll tot = cal(R) - cal(L - 1);
-    out.push_back(tot);
+    int n, m;
+    cin >> n >> m;
+    if (n < m)out.push_back("Sharm El-shaikh");
+    else if (n > m)out.push_back("Luxor");
+    else out.push_back("impossible");
+
+
 }
 int main() {
     //freopen("task.in", "r", stdin);
     SAIFf
-        int tc;
-    cin >> tc;
+        int tc = 1;
+    // cin >> tc;
     while (tc--) {
         SAIF();
     }
