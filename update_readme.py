@@ -19,30 +19,44 @@ for index, filename in enumerate(os.listdir(codes_directory), start=0):
     # Check if the path is a file
     if os.path.isfile(file_path):
         problem_name = os.path.splitext(filename)[0]
-        file_url = os.path.join(github_base_url, codes_directory, filename)
+        file_url = f"{github_base_url}/{codes_directory}/{filename}".replace('\\', '/')
         table_entries.append(f"| {index} | {problem_name} | [Solution]({file_url}) |")
 
 # Prepare the table content
 table_header = "|  Index  | Problem Name | Solution |\n| :-----: | :----------: | :------: |"
 table_content = "\n".join(table_entries)
 
-# Prepare the new README content
-new_readme_content = f"""
+# New content to append
+new_content = f"""
 <div align="center">
 
-# Codeforces Solutions
-This repository contains my solutions to Codeforces problems in C++ language.  
+## Problem List
+
+#### Sorted by Problem Name
 
 ## Index 
 {table_header}
 {table_content}
-
-#### If this helped you out, please consider giving it a :star:
 </div>
 """
 
-# Write the new content to the README file
+# Read the existing README content
+with open(readme_path, 'r') as readme_file:
+    existing_content = readme_file.read()
+
+# Ensure the new content is added after the initial descriptive text
+updated_readme_content = f"""
+# Codeforces Solutions
+
+This repository contains my solutions to Codeforces problems in C++ language.
+
+#### If this helped you out, please consider giving it a :star:
+
+{new_content}
+"""
+
+# Write the updated content to the README file
 with open(readme_path, 'w') as readme_file:
-    readme_file.write(new_readme_content)
+    readme_file.write(updated_readme_content)
 
 print(f'Updated {readme_path} with the list of solution files.')
