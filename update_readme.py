@@ -13,7 +13,7 @@ github_base_url = 'https://github.com/Saifahmeed/CodeForces-Solutions/blob/maste
 table_entries = []
 
 # Iterate through the files in the Codes directory and add to the table
-for index, filename in enumerate(os.listdir(codes_directory), start=1):
+for index, filename in enumerate(os.listdir(codes_directory), start=0):
     # Construct the full file path
     file_path = os.path.join(codes_directory, filename)
     # Check if the path is a file
