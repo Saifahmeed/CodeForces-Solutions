@@ -1,7 +1,7 @@
 import os
 
 # Path to the directory containing the code files
-codes_directory = 'Code'
+codes_directory = 'Code'  # Ensure this is the correct directory name
 
 # Path to the README file
 readme_path = 'README.md'
@@ -14,8 +14,10 @@ table_entries = []
 
 # Iterate through the files in the Codes directory and add to the table
 for index, filename in enumerate(os.listdir(codes_directory), start=1):
-    # Check if the file is a regular file (not a directory)
-    if os.path.isfile(os.path.join(codes_directory, filename)):
+    # Construct the full file path
+    file_path = os.path.join(codes_directory, filename)
+    # Check if the path is a file
+    if os.path.isfile(file_path):
         problem_name = os.path.splitext(filename)[0]
         file_url = os.path.join(github_base_url, codes_directory, filename)
         table_entries.append(f"| {index} | {problem_name} | [Solution]({file_url}) |")
