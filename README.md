@@ -1,5 +1,3 @@
-<div align="center">
-
 # Codeforces Solutions
 
 This repository contains my solutions to Codeforces problems in C++ language.
