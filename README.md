@@ -1,6 +1,6 @@
 # Codeforces Solutions
 
-This repository contains my solutions to Codeforces problems in C++ language.
+This repository contains my solutions to some Codeforces problems in C++.
 
 #### If this helped you out, please consider giving it a :star:
 
